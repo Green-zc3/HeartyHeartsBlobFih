@@ -66,6 +66,8 @@ class fih extends hearty//inherits from Particle
   fih(){
    myY = 200;
    myX = 200;
+  mySpeed = Math.random() * 1.5 + 0.5;
+  myAngle = (Math.random() * 2 * Math.PI);
   
   }//end fih
   
