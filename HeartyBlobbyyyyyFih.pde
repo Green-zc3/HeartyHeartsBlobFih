@@ -1,54 +1,55 @@
-fih [] blob;
-hearty []  Hearts;
+fih [] blob = new fih [2];
+hearty []  Hearts = new hearty [100];
 void setup()
 {
   size(400,400);
-  //background(76,66,181);
+  background(0,45,103);
+ // Hearts = new hearty();
   for(int i = 0; i< Hearts.length; i++)
     Hearts [i] = new hearty();
   
 }
 void draw()
 {
-  Hearts[i].move();
+  for(int i = 0; i< 100; i++){
+ // Hearts[i].move();
   Hearts[i].show();
+  }
 }
 class hearty
 {
-  double myX, myY, mySpeed, myColor;
-  int myAngle;
+  double myX, myY, mySpeed, myAngle;
+  int myColor;
   
- void Hearts()
+ hearty()
   {
     myX = 200;
     myY = 200;
-    mySpeed = Math.random()*16;
-    myAngle = (int)(Math.random()*2*Math.PI);
-    myColor = color((int)(Math.random()*255), (int)(Math.random()*6),(int)(Math.random()*140));
+    mySpeed = Math.random()*8+2;
+    myAngle = (Math.random()*2*Math.PI);
+    myColor = color(243,86,76);
   }//end heart
   
   void move()
   {
-    
+
+  myX = myX + (Math.cos(myAngle) * mySpeed); //cos horizontal
+  myY = myY + (Math.sin(myAngle) * mySpeed); // sin vertical
+
+
   }//end move
   
   void show()
   {
 
-  noStroke();
-  fill(49,90,142,10);
-  rect(0,0,400,400);
-  fill(11,132,142,10);
-  rect(50,50,100,100);
-  fill(82,245,156,10);
-  rect(100,100,100,100);
-  background(0,45,103,10);
-
-  int myX, myY;
-  myX = 100;
-  myY = 100;
+  myX = 200;
+  myY = 200;
   //fill ((int)(Math.random()*255)+1, (int)(Math.random()*100)+1, (int)(Math.random()*80)+1);
-  ellipse (myX, myY, 20,20);
+  fill(myColor);
+  noStroke();
+  ellipse((float)myX- 17, (float)myY- 10, 45, 45);
+  ellipse((float)myX+ 17, (float)myY- 10, 45, 45);
+  triangle((float)myX- 39,(float)myY - 5, (float)myX + 39, (float)myY - 5, (float)myX+1, (float)myY + 47);
   
   }//end show
   
@@ -56,7 +57,9 @@ class hearty
 
 class fih extends hearty//inherits from Particle
 {
-  myY = 400;
-  myX = 250;
+  fih(){
+   myY = 400;
+   myX = 250;
   
+  }//end fih
 }
