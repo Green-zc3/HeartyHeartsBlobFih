@@ -1,5 +1,5 @@
 fih [] blob = new fih [1];
-hearty []  Hearts = new hearty [100];
+hearty []  Hearts = new hearty [88];
 void setup()
 {
   size(400,400);
@@ -14,7 +14,7 @@ void draw()
 {
   background(0,45,103,10);
   
-  if(millis() > 1200){
+  if(frameCount > 50){
   for(int i = 0; i < blob.length; i++){
   blob[i].move();
   blob[i].show();
