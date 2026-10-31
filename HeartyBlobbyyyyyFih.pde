@@ -1,38 +1,46 @@
-fih [] blob = new fih [2];
+fih [] blob = new fih [1];
 hearty []  Hearts = new hearty [100];
 void setup()
 {
   size(400,400);
-  background(0,45,103);
  // Hearts = new hearty();
   for(int i = 0; i< Hearts.length; i++)
     Hearts [i] = new hearty();
-  
+    
+  for(int i = 0; i < blob.length;i++)
+    blob [i] = new fih();
 }
 void draw()
 {
-  for(int i = 0; i< 100; i++){
- // Hearts[i].move();
+  background(0,45,103,10);
+  
+  if(millis() > 1200){
+  for(int i = 0; i < blob.length; i++){
+  blob[i].move();
+  blob[i].show();
+  }
+ }
+  for(int i = 0; i< Hearts.length; i++){
+  Hearts[i].move();
   Hearts[i].show();
   }
+
 }
 class hearty
 {
   double myX, myY, mySpeed, myAngle;
-  int myColor;
   
  hearty()
   {
     myX = 200;
     myY = 200;
-    mySpeed = Math.random()*8+2;
+    mySpeed = Math.random()*1.5+0.5;
     myAngle = (Math.random()*2*Math.PI);
-    myColor = color(243,86,76);
   }//end heart
   
   void move()
   {
-
+  //myAngle += 0.03;
   myX = myX + (Math.cos(myAngle) * mySpeed); //cos horizontal
   myY = myY + (Math.sin(myAngle) * mySpeed); // sin vertical
 
@@ -42,15 +50,13 @@ class hearty
   void show()
   {
 
-  myX = 200;
-  myY = 200;
   //fill ((int)(Math.random()*255)+1, (int)(Math.random()*100)+1, (int)(Math.random()*80)+1);
-  fill(myColor);
   noStroke();
-  ellipse((float)myX- 17, (float)myY- 10, 45, 45);
-  ellipse((float)myX+ 17, (float)myY- 10, 45, 45);
-  triangle((float)myX- 39,(float)myY - 5, (float)myX + 39, (float)myY - 5, (float)myX+1, (float)myY + 47);
-  
+  fill(255,0,0);
+  ellipse((float)myX- 12, (float)myY- 7, 33, 33);
+  ellipse((float)myX+ 12, (float)myY- 7, 33, 33);
+  triangle((float)myX- 29,(float)myY - 3, (float)myX + 29, (float)myY - 3, (float)myX, (float)myY + 35);
+ 
   }//end show
   
 }//end hearty class
@@ -58,8 +64,57 @@ class hearty
 class fih extends hearty//inherits from Particle
 {
   fih(){
-   myY = 400;
-   myX = 250;
+   myY = 200;
+   myX = 200;
   
   }//end fih
-}
+  
+  void move (){
+    myX = myX + (int)(Math.random()*3)-1;
+    myY = myY + (int)(Math.random()*3)-1;
+  }//end move
+  
+  void show(){
+      noStroke();
+      
+      float fx = (float)myX;
+      float fy = (float)myY;
+  //fins
+    fill(255, 152, 195);
+    ellipse(fx- 75, fy + 15, 30, 20);
+    ellipse(fx+72, fy + 15, 30, 20);
+    fill(0);
+    rect(fx-90,fy+12, 20,2);
+    rect(fx- 85,fy +22, 20, 2);
+    rect(fx-87,fy+ 16,20, 2);
+    rect(fx +60,fy +12, 20, 2);
+    rect(fx+ 63,fy + 16,20, 2);
+    rect(fx + 67,fy+ 20,20,2);
+    
+  
+  //body
+  fill(255,224,237);
+  ellipse(fx,fy,153,123);
+  
+  //eyes
+  fill (0);
+  ellipse (fx-37,fy-10,9,9);
+  ellipse (fx+35,fy-10,9,9);
+  
+  //mouth
+    fill(216,153,179);
+    rect(fx -45,fy +20,88,10);
+    ellipse(fx- 40,fy + 30,25, 20);
+    ellipse(fx,fy+20,33,43); // undernose
+    ellipse(fx + 35,fy+28,20,20);
+    
+  
+ //nose
+ fill(255,209,228);
+ ellipse(fx, fy+10, 30,50);
+ fill(255,224,237);
+ ellipse(fx,fy -15,30,30);
+ 
+  }//end show
+  
+}//end class fih
