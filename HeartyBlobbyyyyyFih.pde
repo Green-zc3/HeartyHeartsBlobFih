@@ -71,12 +71,12 @@ class fih extends hearty//inherits from Particle
   
   }//end fih
   
-  void move (){
+  public void move (){
     myX = myX + (int)(Math.random()*3)-1;
     myY = myY + (int)(Math.random()*3)-1;
   }//end move
   
-  void show(){
+  public void show(){
       noStroke();
       
       float fx = (float)myX;
