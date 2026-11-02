@@ -1,5 +1,6 @@
-fih [] blob = new fih [1];
 hearty []  Hearts = new hearty [88];
+fih [] blob = new fih [1];
+
 void setup()
 {
   size(400,400);
