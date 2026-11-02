@@ -4,6 +4,7 @@ fih [] blob = new fih [1];
 void setup()
 {
   size(400,400);
+background(0,45,103);
  // Hearts = new hearty();
   for(int i = 0; i< Hearts.length; i++)
     Hearts [i] = new hearty();
@@ -13,7 +14,7 @@ void setup()
 }
 void draw()
 {
-  background(0,45,103);
+  
   
   if(frameCount > 50){
   for(int i = 0; i < blob.length; i++){
